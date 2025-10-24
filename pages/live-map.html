@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نقشه زنده کافه‌ها - کافه گردی تهران</title>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        /* استایل‌های اختصاصی برای نقشه */
+        #map {
+            width: 100%;
+            height: 100vh; /* تمام ارتفاع صفحه */
+            position: relative;
+            z-index: 1;
+        }
+
+        /* برای اینکه هدر و فوتر روی نقشه قرار نگیرند */
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        main.site-main {
+            flex-grow: 1;
+            padding: 0;
+            display: flex;
+        }
+        .map-container {
+            width: 100%;
+            height: 100%;
+        }
+        .site-footer {
+            display: none; /* فوتر در این صفحه نمایش داده نمی‌شود */
+        }
+        
+        /* استایل پاپ‌آپ‌های روی نقشه */
+        .leaflet-popup-content-wrapper {
+            border-radius: var(--radius-medium);
+            box-shadow: var(--shadow-medium);
+        }
+        .leaflet-popup-content {
+            margin: 15px;
+            text-align: right;
+            font-family: 'IRANSans', sans-serif;
+        }
+        .popup-cafe-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+        .popup-cafe-address {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 12px;
+        }
+        .popup-cafe-link {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 8px 15px;
+            border-radius: var(--radius-small);
+            text-decoration: none;
+            font-size: 12px;
+            transition: background var(--transition-normal);
+        }
+        .popup-cafe-link:hover {
+            background: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header" id="site-header">
+        <!-- کد کامل هدر را اینجا کپی کنید -->
+    </header>
+
+    <main class="site-main">
+        <div class="map-container">
+            <div id="map"></div>
+        </div>
+    </main>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. مقداردهی اولیه نقشه (متمرکز روی تهران)
+            const map = L.map('map').setView([35.7219, 51.3347], 12);
+
+            // 2. اضافه کردن لایه نقشه (از OpenStreetMap)
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            // 3. بارگذاری و اضافه کردن نشانگرهای کافه‌ها
+            loadCafeMarkers(map);
+        });
+
+        async function loadCafeMarkers(map) {
+            try {
+                const response = await fetch('../assets/data/cafes.json');
+                const data = await response.json();
+
+                if (data.cafes && data.cafes.length > 0) {
+                    data.cafes.forEach(cafe => {
+                        // فقط کافه‌هایی را نمایش بده که مختصات دارند
+                        if (cafe.location && cafe.location.map_link) {
+                            const coords = getCoordsFromLink(cafe.location.map_link);
+                            if (coords) {
+                                // ساخت پاپ‌آپ سفارشی
+                                const popupContent = `
+                                    <div class="popup-content">
+                                        <h3 class="popup-cafe-name">${cafe.name}</h3>
+                                        <p class="popup-cafe-address">${cafe.location.address}</p>
+                                        <a href="cafe-detail.html?id=${cafe.id}" class="popup-cafe-link">مشاهده جزئیات</a>
+                                    </div>
+                                `;
+
+                                L.marker(coords)
+                                    .addTo(map)
+                                    .bindPopup(popupContent);
+                            }
+                        }
+                    });
+                }
+            } catch (error) {
+                console.error('Error loading cafe data for map:', error);
+            }
+        }
+
+        function getCoordsFromLink(link) {
+            try {
+                // استخراج مختصات از لینک گوگل مپ (مثال: https://maps.google.com/?q=35.7925,51.4287)
+                const url = new URL(link);
+                const coordsStr = url.searchParams.get('q');
+                if (coordsStr) {
+                    const [lat, lon] = coordsStr.split(',').map(Number);
+                    if (!isNaN(lat) && !isNaN(lon)) {
+                        return [lat, lon];
+                    }
+                }
+                return null;
+            } catch (e) {
+                console.warn('Could not parse coordinates from link:', link);
+                return null;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,340 @@
+/* ==========================================
+   Tablet (768px - 1024px)
+   ========================================== */
+
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    section {
+        padding: var(--section-padding-mobile) 0;
+    }
+    
+    .section-title {
+        font-size: 24px;
+    }
+    
+    .cafe-grid,
+    .blog-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    
+    .category-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+}
+
+/* ==========================================
+   Mobile (max-width: 767px)
+   ========================================== */
+
+@media (max-width: 767px) {
+    /* Typography */
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.3rem; }
+    
+    /* Utilities */
+    .desktop-only {
+        display: none !important;
+    }
+    
+    .mobile-only {
+        display: block !important;
+    }
+    
+    /* Header */
+    .site-header {
+        padding: 12px 0;
+    }
+    
+    .header-logo img {
+        height: 45px;
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    /* Search Section */
+    .search-container {
+        padding: 20px 15px;
+    }
+    
+    .search-title {
+        font-size: 18px;
+    }
+    
+    .search-filters {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    /* Section Header */
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .section-info {
+        gap: 10px;
+    }
+    
+    .section-icon {
+        font-size: 24px;
+    }
+    
+    .section-icon svg {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .section-title {
+        font-size: 20px;
+    }
+    
+    /* Category Grid */
+    .category-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .category-name {
+        font-size: 18px;
+        padding: 15px;
+    }
+    
+    /* Cafe Grid */
+    .cafe-grid,
+    .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .cafe-card-image {
+        height: 180px;
+    }
+    
+    .cafe-logo {
+        width: 70px;
+        height: 70px;
+        bottom: -25px;
+    }
+    
+    .cafe-card-content {
+        padding: 40px 15px 15px;
+    }
+    
+    .cafe-name {
+        font-size: 16px;
+    }
+    
+    /* Category Banner */
+    .category-banner-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .banner-item h3 {
+        font-size: 14px;
+        padding: 12px;
+    }
+    
+    /* Blog Card */
+    .blog-card-image {
+        height: 180px;
+    }
+    
+    .blog-logo-overlay {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .blog-card-content {
+        padding: 15px;
+    }
+    
+    .blog-title {
+        font-size: 15px;
+    }
+    
+    .blog-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    /* Footer */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .footer-logo {
+        height: 50px;
+    }
+    
+    .footer-description {
+        font-size: 14px;
+    }
+    
+    .footer-title {
+        font-size: 16px;
+    }
+    
+    .copyright {
+        font-size: 13px;
+    }
+    
+    /* Floating Button */
+    .floating-map-button {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        left: 20px;
+    }
+    
+    .floating-map-button svg {
+        width: 24px;
+        height: 24px;
+    }
+    
+    /* Buttons */
+    .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    
+    /* Modal */
+    .modal-content {
+        width: 95%;
+        max-height: 85vh;
+    }
+    
+    .modal-header,
+    .modal-body,
+    .modal-footer {
+        padding: 20px;
+    }
+    
+    .modal-title {
+        font-size: 18px;
+    }
+    
+    /* Pagination */
+    .pagination {
+        gap: 5px;
+    }
+    
+    .pagination-item {
+        min-width: 35px;
+        height: 35px;
+        padding: 0 8px;
+        font-size: 13px;
+    }
+    
+    /* Off-Canvas */
+    .off-canvas-content {
+        width: 280px;
+        padding: 25px;
+    }
+    
+    .off-canvas-header img {
+        height: 40px;
+    }
+}
+
+/* ==========================================
+   Extra Small Mobile (max-width: 480px)
+   ========================================== */
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 12px;
+    }
+    
+    section {
+        padding: 30px 0;
+    }
+    
+    /* Category Banner */
+    .category-banner-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Search */
+    .filter-input,
+    .filter-select {
+        font-size: 13px;
+        padding: 12px 14px;
+    }
+    
+    /* Footer */
+    .footer-content {
+        padding: 40px 0 30px;
+    }
+    
+    .footer-bottom {
+        padding: 20px 0;
+    }
+}
+
+/* ==========================================
+   Large Desktop (min-width: 1400px)
+   ========================================== */
+
+@media (min-width: 1400px) {
+    :root {
+        --container-width: 1320px;
+    }
+    
+    .cafe-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .blog-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .category-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ==========================================
+   Print Styles
+   ========================================== */
+
+@media print {
+    .site-header,
+    .search-section,
+    .floating-map-button,
+    .site-footer,
+    .off-canvas-menu,
+    .view-all-link {
+        display: none !important;
+    }
+    
+    .cafe-card,
+    .blog-card {
+        break-inside: avoid;
+    }
+}
+
+/* ==========================================
+   Reduced Motion
+   ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
