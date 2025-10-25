@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>وبلاگ - کافه گردی تهران</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+    <header class="site-header" id="site-header">
+        <!-- کد کامل هدر را از index.html کپی کنید -->
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            <section class="blog-archive-section">
+                <div class="section-header"><h1 class="section-title">وبلاگ کافه گردی</h1></div>
+                <div class="blog-grid" id="full-blog-grid"><div class="loading">در حال بارگذاری مقالات...</div></div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <!-- کد کامل فوتر را از index.html کپی کنید -->
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const container = document.getElementById('full-blog-grid');
+            try {
+                // مسیر صحیح فایل JSON
+                const response = await fetch('../assets/data/blog.json');
+                const data = await response.json();
+                
+                if (data.posts && data.posts.length > 0) {
+                    container.innerHTML = data.posts.map(post => createBlogCard(post)).join('');
+                } else {
+                    container.innerHTML = `<div class="empty-state">مقاله‌ای برای نمایش وجود ندارد.</div>`;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                container.innerHTML = `<div class="error-message">خطا در بارگذاری مقالات.</div>`;
+            }
+        });
+
+        function createBlogCard(post) {
+            const image = post.image || '../assets/images/placeholder.jpg';
+            return `
+                <div class="blog-card">
+                    <a href="blog-detail.html?id=${post.id}">
+                        <div class="blog-card-image"><img src="../${image}" alt="${post.title}" loading="lazy"></div>
+                        <div class="blog-card-content">
+                            <h3 class="blog-title">${post.title}</h3>
+                            <div class="blog-meta">
+                                <span>📅 ${post.date}</span>
+                                <span>💬 ${post.comments || 0} دیدگاه</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

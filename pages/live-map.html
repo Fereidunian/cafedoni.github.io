@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="نقشه زنده کافه‌های تهران">
+    <title>نقشه زنده کافه‌ها - کافه دونی</title>
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E☕%3C/text%3E%3C/svg%3E">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            direction: rtl;
+        }
+
+        .map-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: #003046;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .map-header h1 {
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .back-btn {
+            background: white;
+            color: #003046;
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #EABE12;
+            color: white;
+        }
+
+        #map {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        /* Custom Marker Popup */
+        .leaflet-popup-content-wrapper {
+            border-radius: 10px;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .popup-content {
+            padding: 15px;
+            min-width: 200px;
+        }
+
+        .popup-content h3 {
+            color: #003046;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .popup-content p {
+            color: #666;
+            margin: 5px 0;
+            font-size: 0.9rem;
+        }
+
+        .popup-rating {
+            color: #EABE12;
+            margin: 5px 0;
+        }
+
+        .popup-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background: #003046;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .popup-link:hover {
+            background: #EABE12;
+        }
+
+        /* Loading Indicator */
+        .loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            z-index: 2000;
+            display: none;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .loading i {
+            font-size: 2rem;
+            color: #003046;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="map-header">
+        <h1>
+            <i class="fas fa-map-marked-alt"></i>
+            نقشه زنده کافه‌های تهران
+        </h1>
+        <a href="../index.html" class="back-btn">
+            <i class="fas fa-arrow-right"></i>
+            بازگشت
+        </a>
+    </div>
+
+    <div id="map"></div>
+
+    <div class="loading" id="loading">
+        <i class="fas fa-spinner"></i>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        // Initialize map centered on Tehran
+        const map = L.map('map').setView([35.6892, 51.3890], 12);
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            maxZoom: 19
+        }).addTo(map);
+
+        // Custom coffee icon
+        const cafeIcon = L.icon({
+            iconUrl: 'data:image/svg+xml;base64,' + btoa(`
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40">
+                    <circle cx="12" cy="12" r="11" fill="#003046"/>
+                    <text x="12" y="18" font-size="16" text-anchor="middle" fill="white">☕</text>
+                </svg>
+            `),
+            iconSize: [40, 40],
+            iconAnchor: [20, 40],
+            popupAnchor: [0, -40]
+        });
+
+        // Load cafes data
+        async function loadCafes() {
+            const loading = document.getElementById('loading');
+            loading.classList.add('active');
+
+            try {
+                const response = await fetch('../assets/data/cafes.json');
+                const cafes = await response.json();
+
+                cafes.forEach(cafe => {
+                    if (cafe.location && cafe.location.coordinates) {
+                        const { lat, lng } = cafe.location.coordinates;
+                        
+                        // Create marker
+                        const marker = L.marker([lat, lng], { icon: cafeIcon }).addTo(map);
+
+                        // Create popup content
+                        const popupContent = `
+                            <div class="popup-content">
+                                <h3>${cafe.name}</h3>
+                                <p><i class="fas fa-map-marker-alt"></i> ${cafe.location.area}</p>
+                                <div class="popup-rating">
+                                    ${'★'.repeat(Math.round(cafe.rating))}${'☆'.repeat(5 - Math.round(cafe.rating))}
+                                    <span>(${cafe.rating})</span>
+                                </div>
+                                <p><i class="fas fa-tag"></i> ${cafe.type}</p>
+                                <a href="#" class="popup-link">مشاهده جزئیات</a>
+                            </div>
+                        `;
+
+                        marker.bindPopup(popupContent);
+                    }
+                });
+
+            } catch (error) {
+                console.error('Error loading cafes:', error);
+                alert('خطا در بارگذاری اطلاعات کافه‌ها');
+            } finally {
+                loading.classList.remove('active');
+            }
+        }
+
+        // Load cafes on page load
+        loadCafes();
+    </script>
+
+</body>
+</html>

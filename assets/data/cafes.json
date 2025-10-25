@@ -1,0 +1,348 @@
+[
+  {
+    "id": 1,
+    "name": "کافه هوکاچی",
+    "location": {
+      "zone": "north",
+      "area": "الهیه",
+      "address": "خیابان الهیه، نرسیده به چهارراه الهیه",
+      "coordinates": {
+        "lat": 35.7634,
+        "lng": 51.4196
+      },
+      "map_link": "#"
+    },
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23003046' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='32' text-anchor='middle' dy='.3em'%3E☕ هوکاچی%3C/text%3E%3C/svg%3E",
+    "logo": null,
+    "special_offer": true,
+    "rating": 4.5,
+    "type": "کافه",
+    "facilities": ["قلیان", "فضای باز", "پارکینگ"]
+  },
+  {
+    "id": 2,
+    "name": "کافه رستوران آنا",
+    "location": {
+      "zone": "north",
+      "area": "پل کالج",
+      "address": "بزرگراه شهید چمران، پل کالج",
+      "coordinates": {
+        "lat": 35.7525,
+        "lng": 51.4073
+      }
+    },
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23D4145A' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='32' text-anchor='middle' dy='.3em'%3E☕ آنا%3C/text%3E%3C/svg%3E",
+    "special_offer": true,
+    "rating": 4.2,
+    "type": "رستوران",
+    "facilities": ["موسیقی زنده", "VIP", "پارکینگ"]
+  },
+  {
+    "id": 3,
+    "name": "کافه هِل",
+    "location": {
+      "zone": "north",
+      "area": "پل کالج",
+      "address": "بالاتر از پل کالج",
+      "coordinates": {
+        "lat": 35.7558,
+        "lng": 51.4089
+      }
+    },
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23009688' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='32' text-anchor='middle' dy='.3em'%3E☕ هِل%3C/text%3E%3C/svg%3E",
+    "special_offer": true,
+    "rating": 4.8,
+    "type": "کافه",
+    "facilities": ["مطالعه و کار", "وای‌فای سریع", "فضای آرام"]
+  },
+  {
+    "id": 4,
+    "name": "رستوران ویلوکاپ",
+    "location": {
+      "zone": "north",
+      "area": "فرشته",
+      "address": "خیابان فرشته، نبش کوچه دوم",
+      "coordinates": {
+        "lat": 35.7701,
+        "lng": 51.4183
+      }
+    },
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%238E44AD' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='32' text-anchor='middle' dy='.3em'%3E🍽️ ویلوکاپ%3C/text%3E%3C/svg%3E",
+    "special_offer": true,
+    "rating": 4.6,
+    "type": "رستوران",
+    "facilities": ["فضای VIP", "پارکینگ", "منو بین‌المللی"]
+  },
+  {
+    "id": 5,
+    "name": "کافه رستوران فلامینگو",
+    "location": {
+      "zone": "north",
+      "area": "ولنجک",
+      "address": "خیابان ولنجک، پلاک 89",
+      "coordinates": {
+        "lat": 35.7982,
+        "lng": 51.4041
+      }
+    },
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23E74C3C' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='28' text-anchor='middle' dy='.3em'%3E🦩 فلامینگو%3C/text%3E%3C/svg%3E",
+    "rating": 4.3,
+    "type": "کافه رستوران",
+    "facilities": ["فضای باز", "روف گاردن", "موسیقی"]
+  },
+  {
+    "id": 6,
+    "name": "کافه سم بی سم",
+    "location": {
+      "zone": "north",
+      "area": "نیاوران",
+      "address": "میدان نیاوران",
+      "coordinates": {
+        "lat": 35.8169,
+        "lng": 51.4679
+      }
+    },
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23F39C12' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='28' text-anchor='middle' dy='.3em'%3E☕ سم بی سم%3C/text%3E%3C/svg%3E",
+    "rating": 4.7,
+    "type": "کافه",
+    "facilities": ["فضای سبز", "بردگیم", "قلیان"]
+  },
+  {
+    "id": 7,
+    "name": "کافه رستوران این وان",
+    "location": {
+      "zone": "north",
+      "area": "فرشته",
+      "address": "فرشته، خیابان فروردین",
+      "coordinates": {
+        "lat": 35.7712,
+        "lng": 51.4201
+      }
+    },
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%2316A085' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='32' text-anchor='middle' dy='.3em'%3E☕ این وان%3C/text%3E%3C/svg%3E",
+    "rating": 4.4,
+    "type": "کافه رستوران",
+    "facilities": ["صبحانه", "پارکینگ", "فضای دنج"]
+  },
+  {
+    "id": 8,
+    "name": "کافه رومی",
+    "location": {
+      "zone": "north",
+      "area": "شریعتی",
+      "address": "بالاتر از پل صدر",
+      "coordinates": {
+        "lat": 35.7456,
+        "lng": 51.4312
+      }
+    },
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%232C3E50' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='32' text-anchor='middle' dy='.3em'%3E📖 رومی%3C/text%3E%3C/svg%3E",
+    "rating": 5.0,
+    "type": "کافه کتاب",
+    "facilities": ["کتابخانه", "مطالعه و کار", "وای‌فای"]
+  },
+  {
+    "id": 9,
+    "name": "کافه رستوران نارکو",
+    "location": {
+      "zone": "east",
+      "area": "هفت حوض",
+      "address": "میدان هفت حوض",
+      "coordinates": {
+        "lat": 35.7289,
+        "lng": 51.4856
+      }
+    },
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23C0392B' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='32' text-anchor='middle' dy='.3em'%3E☕ نارکو%3C/text%3E%3C/svg%3E",
+    "rating": 3.7,
+    "type": "کافه رستوران",
+    "facilities": ["قلیان", "فضای باز"]
+  },
+  {
+    "id": 10,
+    "name": "ایوار لانژ",
+    "location": {
+      "zone": "east",
+      "area": "تهرانپارس",
+      "address": "تهرانپارس غربی",
+      "coordinates": {
+        "lat": 35.7123,
+        "lng": 51.5234
+      }
+    },
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%239B59B6' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='32' text-anchor='middle' dy='.3em'%3E🎵 ایوار%3C/text%3E%3C/svg%3E",
+    "rating": 4.1,
+    "type": "لانژ",
+    "facilities": ["موسیقی زنده", "VIP", "قلیان"]
+  },
+  {
+    "id": 11,
+    "name": "کافه رستوران آلاویلا",
+    "location": {
+      "zone": "east",
+      "area": "تهرانپارس",
+      "address": "سیوان سنتر",
+      "coordinates": {
+        "lat": 35.7089,
+        "lng": 51.5201
+      }
+    },
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%2327AE60' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='28' text-anchor='middle' dy='.3em'%3E🏛️ آلاویلا%3C/text%3E%3C/svg%3E",
+    "rating": 5.0,
+    "type": "کافه رستوران",
+    "facilities": ["صبحانه", "پارکینگ", "فضای خانوادگی"]
+  },
+  {
+    "id": 12,
+    "name": "کافه رستوران صبا",
+    "location": {
+      "zone": "east",
+      "area": "میدان شهدا",
+      "address": "میدان شهدا، ابتدای خیابان دماوند",
+      "coordinates": {
+        "lat": 35.6945,
+        "lng": 51.4512
+      }
+    },
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%2334495E' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='32' text-anchor='middle' dy='.3em'%3E☕ صبا%3C/text%3E%3C/svg%3E",
+    "rating": 4.0,
+    "type": "کافه رستوران",
+    "facilities": ["پارکینگ", "منو متنوع"]
+  },
+  {
+    "id": 13,
+    "name": "کافه رستوران سیتی تراس",
+    "location": {
+      "zone": "west",
+      "area": "شهران",
+      "address": "شهرک شهران جنوبی",
+      "coordinates": {
+        "lat": 35.7234,
+        "lng": 51.2987
+      }
+    },
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%231ABC9C' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='26' text-anchor='middle' dy='.3em'%3E🏙️ سیتی تراس%3C/text%3E%3C/svg%3E",
+    "rating": 4.4,
+    "type": "کافه رستوران",
+    "facilities": ["روف گاردن", "پارکینگ"]
+  },
+  {
+    "id": 14,
+    "name": "کافه رستوران سالمبا",
+    "location": {
+      "zone": "west",
+      "area": "بلوار فردوس غرب",
+      "address": "فردوس غرب، نزدیک ایستگاه متro",
+      "coordinates": {
+        "lat": 35.7456,
+        "lng": 51.3012
+      }
+    },
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23E67E22' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='32' text-anchor='middle' dy='.3em'%3E🥗 سالمبا%3C/text%3E%3C/svg%3E",
+    "rating": 4.2,
+    "type": "کافه رستوران",
+    "facilities": ["منو سالم", "صبحانه"]
+  },
+  {
+    "id": 15,
+    "name": "کافه پرسه در پراگ",
+    "location": {
+      "zone": "west",
+      "area": "شهرک غرب",
+      "address": "بلوار دریا، شهرک غرب",
+      "coordinates": {
+        "lat": 35.7589,
+        "lng": 51.3256
+      }
+    },
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%233498DB' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='28' text-anchor='middle' dy='.3em'%3E🚶 پرسه%3C/text%3E%3C/svg%3E",
+    "rating": 4.5,
+    "type": "کافه",
+    "facilities": ["بردگیم", "فضای دنج"]
+  },
+  {
+    "id": 16,
+    "name": "کافه رستوران والو لانژ",
+    "location": {
+      "zone": "west",
+      "area": "شهرک غرب",
+      "address": "شهرک غرب، خیابان جماران",
+      "coordinates": {
+        "lat": 35.7601,
+        "lng": 51.3278
+      }
+    },
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23E74C3C' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='28' text-anchor='middle' dy='.3em'%3E🎭 والو%3C/text%3E%3C/svg%3E",
+    "rating": 4.1,
+    "type": "لانژ",
+    "facilities": ["موسیقی زنده", "قلیان", "VIP"]
+  },
+  {
+    "id": 17,
+    "name": "کافه پاملا",
+    "location": {
+      "zone": "center",
+      "area": "یوسف آباد",
+      "address": "میدان یوسف آباد",
+      "coordinates": {
+        "lat": 35.7378,
+        "lng": 51.4056
+      }
+    },
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23D35400' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='32' text-anchor='middle' dy='.3em'%3E☕ پاملا%3C/text%3E%3C/svg%3E",
+    "rating": 4.3,
+    "type": "کافه",
+    "facilities": ["فضای آرام", "قنادی"]
+  },
+  {
+    "id": 18,
+    "name": "خانه کتاب اُرسا",
+    "location": {
+      "zone": "center",
+      "area": "کریمخان",
+      "address": "خیابان کریمخان زند",
+      "coordinates": {
+        "lat": 35.7012,
+        "lng": 51.4189
+      }
+    },
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%238E44AD' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='28' text-anchor='middle' dy='.3em'%3E📚 اُرسا%3C/text%3E%3C/svg%3E",
+    "rating": 5.0,
+    "type": "کافه کتاب",
+    "facilities": ["کتابخانه", "مطالعه و کار", "وای‌فای"]
+  },
+  {
+    "id": 19,
+    "name": "کافه فی فی",
+    "location": {
+      "zone": "center",
+      "area": "کریمخان",
+      "address": "کریمخان، نزدیک پارک ملت",
+      "coordinates": {
+        "lat": 35.7023,
+        "lng": 51.4201
+      }
+    },
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%2316A085' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='32' text-anchor='middle' dy='.3em'%3E☕ فی فی%3C/text%3E%3C/svg%3E",
+    "rating": 4.2,
+    "type": "کافه",
+    "facilities": ["قلیان", "فضای باز"]
+  },
+  {
+    "id": 20,
+    "name": "چای کافه",
+    "location": {
+      "zone": "center",
+      "area": "کریمخان‌زند",
+      "address": "کریمخان، روبروی پارک شهر",
+      "coordinates": {
+        "lat": 35.6989,
+        "lng": 51.4178
+      }
+    },
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23C0392B' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='28' text-anchor='middle' dy='.3em'%3E🍵 چای کافه%3C/text%3E%3C/svg%3E",
+    "rating": 4.0,
+    "type": "کافه سنتی",
+    "facilities": ["قلیان", "چای سنتی"]
+  }
+]

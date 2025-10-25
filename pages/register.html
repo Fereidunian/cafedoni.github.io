@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ثبت کافه در کافه دونی">
+    <title>ثبت کافه - کافه دونی</title>
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E☕%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="../index.html">
+                        <svg width="150" height="50" viewBox="0 0 150 50" xmlns="http://www.w3.org/2000/svg">
+                            <text x="10" y="35" font-family="Arial" font-size="24" fill="#003046" font-weight="bold">کافه دونی</text>
+                        </svg>
+                    </a>
+                </div>
+                <a href="../index.html" class="btn btn-secondary">بازگشت به صفحه اصلی</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Register Form -->
+    <section class="register-section">
+        <div class="container">
+            <div class="register-container">
+                <div class="register-header">
+                    <i class="fas fa-store"></i>
+                    <h1>ثبت کافه در کافه دونی</h1>
+                    <p>اطلاعات کافه یا رستوران خود را با دقت وارد نمایید</p>
+                </div>
+
+                <form class="register-form" id="registerForm">
+                    
+                    <!-- Owner Info -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-user"></i> اطلاعات مالک</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="ownerName">نام و نام خانوادگی مالک *</label>
+                                <input type="text" id="ownerName" name="ownerName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ownerPhone">شماره تماس *</label>
+                                <input type="tel" id="ownerPhone" name="ownerPhone" pattern="[0-9]{11}" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cafe Info -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-coffee"></i> اطلاعات کافه</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cafeName">نام کافه/رستوران *</label>
+                                <input type="text" id="cafeName" name="cafeName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cafeType">نوع *</label>
+                                <select id="cafeType" name="cafeType" required>
+                                    <option value="">انتخاب کنید</option>
+                                    <option value="cafe">کافه</option>
+                                    <option value="restaurant">رستوران</option>
+                                    <option value="fastfood">فست فود</option>
+                                    <option value="traditional">رستوران سنتی</option>
+                                    <option value="coffeeshop">کافه قنادی</option>
+                                    <option value="takeaway">تیک اوی</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cafeAddress">آدرس کامل *</label>
+                            <textarea id="cafeAddress" name="cafeAddress" rows="3" required></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cafeZone">منطقه *</label>
+                                <select id="cafeZone" name="cafeZone" required>
+                                    <option value="">انتخاب کنید</option>
+                                    <option value="north">شمال تهران</option>
+                                    <option value="south">جنوب تهران</option>
+                                    <option value="east">شرق تهران</option>
+                                    <option value="west">غرب تهران</option>
+                                    <option value="center">مرکز تهران</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="cafePhone">شماره تماس کافه</label>
+                                <input type="tel" id="cafePhone" name="cafePhone" pattern="[0-9]{11}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Facilities -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-check-circle"></i> امکانات</h3>
+                        <div class="checkbox-grid">
+                            <label><input type="checkbox" name="facilities" value="parking"> پارکینگ اختصاصی</label>
+                            <label><input type="checkbox" name="facilities" value="hookah"> قلیان</label>
+                            <label><input type="checkbox" name="facilities" value="outdoor"> فضای باز</label>
+                            <label><input type="checkbox" name="facilities" value="vip"> فضای VIP</label>
+                            <label><input type="checkbox" name="facilities" value="music"> موسیقی زنده</label>
+                            <label><input type="checkbox" name="facilities" value="football"> پخش فوتبال</label>
+                            <label><input type="checkbox" name="facilities" value="boardgame"> بردگیم و بازی</label>
+                            <label><input type="checkbox" name="facilities" value="birthday"> برگزاری تولد</label>
+                            <label><input type="checkbox" name="facilities" value="breakfast"> صبحانه</label>
+                            <label><input type="checkbox" name="facilities" value="24h"> شبانه‌روزی</label>
+                            <label><input type="checkbox" name="facilities" value="wheelchair"> مناسب ویلچر</label>
+                            <label><input type="checkbox" name="facilities" value="work"> مطالعه و کار</label>
+                        </div>
+                    </div>
+
+                    <!-- Submit -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-large">
+                            <i class="fas fa-paper-plane"></i>
+                            ثبت درخواست
+                        </button>
+                    </div>
+
+                    <!-- Response Message -->
+                    <div class="form-message" id="formMessage"></div>
+
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-simple">
+        <div class="container">
+            <p>&copy; 1404 کافه دونی - تمامی حقوق محفوظ است</p>
+        </div>
+    </footer>
+
+    <script>
+        // N8N Webhook Configuration
+        const WEBHOOK_URL = 'https://your-n8n-instance.com/webhook/cafe-registration'; // تغییر دهید
+
+        const form = document.getElementById('registerForm');
+        const message = document.getElementById('formMessage');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Get form data
+            const formData = new FormData(form);
+            const data = {
+                ownerName: formData.get('ownerName'),
+                ownerPhone: formData.get('ownerPhone'),
+                cafeName: formData.get('cafeName'),
+                cafeType: formData.get('cafeType'),
+                cafeAddress: formData.get('cafeAddress'),
+                cafeZone: formData.get('cafeZone'),
+                cafePhone: formData.get('cafePhone'),
+                facilities: formData.getAll('facilities'),
+                timestamp: new Date().toISOString()
+            };
+
+            try {
+                // Show loading
+                message.className = 'form-message loading';
+                message.textContent = 'در حال ارسال...';
+
+                // Send to webhook
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    message.className = 'form-message success';
+                    message.textContent = '✓ درخواست شما با موفقیت ثبت شد. به زودی با شما تماس خواهیم گرفت.';
+                    form.reset();
+                } else {
+                    throw new Error('خطا در ارسال');
+                }
+
+            } catch (error) {
+                message.className = 'form-message error';
+                message.textContent = '✗ خطا در ارسال درخواست. لطفاً دوباره تلاش کنید.';
+                console.error('Error:', error);
+            }
+        });
+    </script>
+
+</body>
+</html>

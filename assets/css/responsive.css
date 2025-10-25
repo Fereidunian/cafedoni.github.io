@@ -1,0 +1,272 @@
+/* ==========================================
+   RESPONSIVE STYLES
+   ========================================== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .nav-desktop {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .section-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .cafes-grid,
+    .blog-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 20px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    /* Header */
+    .header-content {
+        padding: 10px 0;
+    }
+
+    .logo svg {
+        width: 120px;
+        height: auto;
+    }
+
+    /* Hero */
+    .hero {
+        padding: 15px 0;
+    }
+
+    /* Search Section */
+    .search-section {
+        padding: 30px 0;
+    }
+
+    .search-box {
+        padding: 20px;
+    }
+
+    .search-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .search-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .search-form .form-row {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .search-form input[type="text"],
+    .dropdown-filter {
+        min-width: 100%;
+        width: 100%;
+    }
+
+    .btn-search {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Sections */
+    .categories,
+    .special-offers,
+    .regional-cafes,
+    .blog-section,
+    .category-banners {
+        padding: 40px 0;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .section-header i {
+        font-size: 1.5rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.3rem;
+    }
+
+    /* Grids */
+    .categories-grid,
+    .cafes-grid,
+    .blog-grid,
+    .banners-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    /* Cards */
+    .cafe-card-content h3,
+    .blog-card-content h3 {
+        font-size: 1.1rem;
+    }
+
+    /* Footer */
+    .footer {
+        padding-top: 80px;
+    }
+
+    .footer-shape svg {
+        height: 60px;
+    }
+
+    .footer-content {
+        padding: 30px 0;
+    }
+
+    .footer-col p {
+        font-size: 0.95rem;
+    }
+
+    /* Floating Buttons */
+    .floating-map-btn,
+    .back-to-top {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+        bottom: 20px;
+    }
+
+    .floating-map-btn {
+        left: 20px;
+    }
+
+    .back-to-top {
+        right: 20px;
+    }
+
+    /* Error Page */
+    .error-code {
+        font-size: 5rem;
+    }
+
+    .error-title {
+        font-size: 1.5rem;
+    }
+
+    .error-description {
+        font-size: 1rem;
+    }
+
+    .error-actions {
+        flex-direction: column;
+    }
+
+    .error-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Register Page */
+    .register-section {
+        padding: 60px 0 20px;
+    }
+
+    .register-header {
+        padding: 30px 20px;
+    }
+
+    .register-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .register-header i {
+        font-size: 2.5rem;
+    }
+
+    .register-form {
+        padding: 25px;
+    }
+
+    .form-section h3 {
+        font-size: 1.1rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .checkbox-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .btn {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
+
+    .mobile-menu-content {
+        width: 90%;
+    }
+
+    .search-box {
+        padding: 15px;
+    }
+
+    .cafe-card-content,
+    .blog-card-content {
+        padding: 15px;
+    }
+
+    .footer-content {
+        padding: 20px 0;
+    }
+
+    .newsletter-form input {
+        padding: 12px;
+    }
+}
+
+/* Landscape Mobile */
+@media (max-width: 900px) and (orientation: landscape) {
+    .hero {
+        padding: 10px 0;
+    }
+
+    .search-section {
+        padding: 20px 0;
+    }
+
+    .categories,
+    .special-offers,
+    .regional-cafes,
+    .blog-section {
+        padding: 30px 0;
+    }
+}
+
+/* High Resolution Displays */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+
+    .cafes-grid,
+    .blog-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
