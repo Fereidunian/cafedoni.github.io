@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="کافه گردی تهران - اولین و تنها مرجع تخصصی معرفی کافه‌های شهر تهران">
+    <meta name="theme-color" content="#003046">
+    
+    <title>کافه دونی - معرفی کافه‌های تهران</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E☕%3C/text%3E%3C/svg%3E">
+    
+    <!-- Leaflet CSS for Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- ========== HEADER ========== -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="index.html">
+                        <svg width="150" height="50" viewBox="0 0 150 50" xmlns="http://www.w3.org/2000/svg">
+                            <text x="10" y="35" font-family="Arial, sans-serif" font-size="24" fill="#003046" font-weight="bold">کافه دونی</text>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="nav-desktop">
+                    <ul>
+                        <li><a href="index.html" class="active">صفحه اصلی</a></li>
+                        <li><a href="#cafes">کافه‌ها</a></li>
+                        <li><a href="#blog">وبلاگ</a></li>
+                        <li><a href="pages/live-map.html">نقشه زنده</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Actions -->
+                <div class="header-actions">
+                    <a href="pages/register.html" class="btn btn-primary">ثبت کافه</a>
+                    <button class="hamburger" id="hamburger" aria-label="منوی موبایل">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== MOBILE MENU (Off-Canvas) ========== -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-overlay" id="menuOverlay"></div>
+        <div class="mobile-menu-content">
+            <div class="mobile-menu-header">
+                <svg width="120" height="40" viewBox="0 0 150 50" xmlns="http://www.w3.org/2000/svg">
+                    <text x="10" y="30" font-family="Arial" font-size="20" fill="#003046" font-weight="bold">کافه دونی</text>
+                </svg>
+                <button class="close-menu" id="closeMenu">&times;</button>
+            </div>
+            
+            <div class="mobile-search">
+                <input type="search" placeholder="جستجو...">
+                <i class="fas fa-search"></i>
+            </div>
+
+            <nav class="mobile-nav">
+                <a href="index.html"><i class="fas fa-home"></i> صفحه اصلی</a>
+                <a href="#cafes"><i class="fas fa-coffee"></i> کافه‌ها</a>
+                <a href="#blog"><i class="fas fa-newspaper"></i> وبلاگ</a>
+                <a href="pages/live-map.html"><i class="fas fa-map-marked-alt"></i> نقشه زنده</a>
+            </nav>
+
+            <div class="mobile-social">
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://t.me" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="mailto:info@cafedooni.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="tel:09125698747" aria-label="Phone"><i class="fas fa-phone"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== HERO BANNER ========== -->
+    <section class="hero">
+        <div class="container">
+            <a href="pages/live-map.html" class="hero-link">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500'%3E%3Crect fill='%23003046' width='500' height='500'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='24' text-anchor='middle' dy='.3em'%3Eنقشه زنده کافه‌ها%3C/text%3E%3C/svg%3E">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1140 630'%3E%3Crect fill='%23003046' width='1140' height='630'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='48' text-anchor='middle' dy='.3em'%3Eنقشه زنده کافه‌های تهران%3C/text%3E%3C/svg%3E" alt="بنر نقشه زنده">
+                </picture>
+            </a>
+        </div>
+    </section>
+
+    <!-- ========== ADVANCED SEARCH ========== -->
+    <section class="search-section" id="search-section">
+        <div class="container">
+            <div class="search-box">
+                <div class="search-header">
+                    <i class="fas fa-search"></i>
+                    <h2>جستجوی پیشرفته</h2>
+                </div>
+
+                <form class="search-form" id="searchForm">
+                    <div class="form-row">
+                        <input type="text" id="searchName" placeholder="جستجوی بر اساس نام کافه">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="dropdown-filter">
+                            <button type="button" class="filter-btn" id="typeBtn">
+                                نوع <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="filter-dropdown" id="typeDropdown">
+                                <label><input type="checkbox" name="type" value="cafe"> کافه</label>
+                                <label><input type="checkbox" name="type" value="restaurant"> رستوران</label>
+                                <label><input type="checkbox" name="type" value="fastfood"> فست فود</label>
+                                <label><input type="checkbox" name="type" value="traditional"> رستوران سنتی</label>
+                                <label><input type="checkbox" name="type" value="coffeeshop"> کافه قنادی</label>
+                                <label><input type="checkbox" name="type" value="takeaway"> تیک اوی</label>
+                                <label><input type="checkbox" name="type" value="icecream"> آبمیوه بستنی</label>
+                                <label><input type="checkbox" name="type" value="catering"> کترینگ</label>
+                            </div>
+                        </div>
+
+                        <div class="dropdown-filter">
+                            <button type="button" class="filter-btn" id="locationBtn">
+                                موقعیت مکانی <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="filter-dropdown" id="locationDropdown">
+                                <label><input type="checkbox" name="location" value="north"> شمال تهران</label>
+                                <label><input type="checkbox" name="location" value="south"> جنوب تهران</label>
+                                <label><input type="checkbox" name="location" value="east"> شرق تهران</label>
+                                <label><input type="checkbox" name="location" value="west"> غرب تهران</label>
+                                <label><input type="checkbox" name="location" value="center"> مرکز تهران</label>
+                            </div>
+                        </div>
+
+                        <div class="dropdown-filter">
+                            <button type="button" class="filter-btn" id="facilitiesBtn">
+                                امکانات <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="filter-dropdown" id="facilitiesDropdown">
+                                <label><input type="checkbox" name="facilities" value="parking"> پارکینگ</label>
+                                <label><input type="checkbox" name="facilities" value="hookah"> قلیان</label>
+                                <label><input type="checkbox" name="facilities" value="outdoor"> فضای باز</label>
+                                <label><input type="checkbox" name="facilities" value="vip"> VIP</label>
+                                <label><input type="checkbox" name="facilities" value="music"> موسیقی زنده</label>
+                                <label><input type="checkbox" name="facilities" value="boardgame"> بردگیم</label>
+                                <label><input type="checkbox" name="facilities" value="breakfast"> صبحانه</label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-search">جستجو کنید</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CATEGORIES ========== -->
+    <section class="categories">
+        <div class="container">
+            <div class="section-header">
+                <i class="fas fa-th-large"></i>
+                <h2>دسته بندی</h2>
+            </div>
+
+            <div class="categories-grid">
+                <a href="#" class="category-card">
+                    <div class="category-image">
+                        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                            <rect fill="#EABE12" width="400" height="300"/>
+                            <text x="50%" y="50%" fill="white" font-size="48" text-anchor="middle" dy=".3em">🎂</text>
+                        </svg>
+                    </div>
+                    <h3>تولد</h3>
+                </a>
+
+                <a href="#" class="category-card">
+                    <div class="category-image">
+                        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                            <rect fill="#FF6B6B" width="400" height="300"/>
+                            <text x="50%" y="50%" fill="white" font-size="48" text-anchor="middle" dy=".3em">🍳</text>
+                        </svg>
+                    </div>
+                    <h3>صبحانه</h3>
+                </a>
+
+                <a href="#" class="category-card">
+                    <div class="category-image">
+                        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                            <rect fill="#4ECDC4" width="400" height="300"/>
+                            <text x="50%" y="50%" fill="white" font-size="48" text-anchor="middle" dy=".3em">💨</text>
+                        </svg>
+                    </div>
+                    <h3>قلیان</h3>
+                </a>
+
+                <a href="#" class="category-card">
+                    <div class="category-image">
+                        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                            <rect fill="#95E1D3" width="400" height="300"/>
+                            <text x="50%" y="50%" fill="white" font-size="48" text-anchor="middle" dy=".3em">🌳</text>
+                        </svg>
+                    </div>
+                    <h3>کافه‌های روباز</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SPECIAL OFFERS ========== -->
+    <section class="special-offers">
+        <div class="container">
+            <div class="section-header">
+                <i class="fas fa-bullhorn"></i>
+                <h2>پیشنهادات ویژه هفته</h2>
+                <a href="#" class="view-all">مشاهده همه <i class="fas fa-angle-left"></i></a>
+            </div>
+
+            <div class="cafes-grid" id="specialOffers">
+                <!-- Dynamic content loaded from JSON -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CATEGORY BANNERS ========== -->
+    <section class="category-banners">
+        <div class="container">
+            <div class="banners-grid">
+                <a href="#" class="banner-item">
+                    <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect fill="#140B64" width="400" height="200"/>
+                        <text x="50%" y="50%" fill="white" font-size="32" text-anchor="middle" dy=".3em">🎵 موسیقی زنده</text>
+                    </svg>
+                </a>
+                <a href="#" class="banner-item">
+                    <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect fill="#D4145A" width="400" height="200"/>
+                        <text x="50%" y="50%" fill="white" font-size="32" text-anchor="middle" dy=".3em">🍲 غذای ایرانی</text>
+                    </svg>
+                </a>
+                <a href="#" class="banner-item">
+                    <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect fill="#009688" width="400" height="200"/>
+                        <text x="50%" y="50%" fill="white" font-size="32" text-anchor="middle" dy=".3em">⚽ تماشای فوتبال</text>
+                    </svg>
+                </a>
+                <a href="#" class="banner-item">
+                    <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect fill="#F39C12" width="400" height="200"/>
+                        <text x="50%" y="50%" fill="white" font-size="32" text-anchor="middle" dy=".3em">📦 تیک اوی</text>
+                    </svg>
+                </a>
+                <a href="#" class="banner-item">
+                    <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect fill="#8E44AD" width="400" height="200"/>
+                        <text x="50%" y="50%" fill="white" font-size="32" text-anchor="middle" dy=".3em">🎲 بردگیم و بازی</text>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== REGIONAL CAFES ========== -->
+    
+    <!-- North Tehran -->
+    <section class="regional-cafes" id="cafes">
+        <div class="container">
+            <div class="section-header">
+                <i class="fas fa-map-marker-alt"></i>
+                <h2>شمال تهران</h2>
+                <a href="#" class="view-all">مشاهده همه <i class="fas fa-angle-left"></i></a>
+            </div>
+            <div class="cafes-grid" id="northCafes"></div>
+        </div>
+    </section>
+
+    <!-- East Tehran -->
+    <section class="regional-cafes">
+        <div class="container">
+            <div class="section-header">
+                <i class="fas fa-map-marker-alt"></i>
+                <h2>شرق تهران</h2>
+                <a href="#" class="view-all">مشاهده همه <i class="fas fa-angle-left"></i></a>
+            </div>
+            <div class="cafes-grid" id="eastCafes"></div>
+        </div>
+    </section>
+
+    <!-- West Tehran -->
+    <section class="regional-cafes">
+        <div class="container">
+            <div class="section-header">
+                <i class="fas fa-map-marker-alt"></i>
+                <h2>غرب تهران</h2>
+                <a href="#" class="view-all">مشاهده همه <i class="fas fa-angle-left"></i></a>
+            </div>
+            <div class="cafes-grid" id="westCafes"></div>
+        </div>
+    </section>
+
+    <!-- Center Tehran -->
+    <section class="regional-cafes">
+        <div class="container">
+            <div class="section-header">
+                <i class="fas fa-map-marker-alt"></i>
+                <h2>مرکز تهران</h2>
+                <a href="#" class="view-all">مشاهده همه <i class="fas fa-angle-left"></i></a>
+            </div>
+            <div class="cafes-grid" id="centerCafes"></div>
+        </div>
+    </section>
+
+    <!-- ========== BLOG ========== -->
+    <section class="blog-section" id="blog">
+        <div class="container">
+            <div class="section-header">
+                <i class="fas fa-newspaper"></i>
+                <h2>وبلاگ</h2>
+                <a href="#" class="view-all">مشاهده همه <i class="fas fa-angle-left"></i></a>
+            </div>
+            <div class="blog-grid" id="blogPosts"></div>
+        </div>
+    </section>
+
+    <!-- ========== TOURISM BLOG ========== -->
+    <section class="blog-section">
+        <div class="container">
+            <div class="section-header">
+                <i class="fas fa-plane"></i>
+                <h2>مقالات گردشگری تهران</h2>
+                <a href="#" class="view-all">مشاهده همه <i class="fas fa-angle-left"></i></a>
+            </div>
+            <div class="blog-grid" id="tourismPosts"></div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="footer-shape">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                <path fill="#003046" opacity="0.33" d="M473,67.3c-203.9,88.3-263.1-34-320.3,0C66,119.1,0,59.7,0,59.7V0h1000v59.7c0,0-62.1,26.1-94.9,29.3c-32.8,3.3-62.8-12.3-75.8-22.1C806,49.6,745.3,8.7,694.9,4.7S492.4,59,473,67.3z"/>
+            </svg>
+        </div>
+
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+                        <text x="10" y="40" font-family="Arial" font-size="28" fill="white" font-weight="bold">کافه دونی</text>
+                    </svg>
+                    <p>کافه دونی اولین و تنها مرجع تخصصی معرفی کافه‌های شهر تهران که از سال 1395 فعالیت خود را با هدف گسترش فرهنگ کافه نشینی در شبکه‌های اجتماعی آغاز کرده است.</p>
+                    
+                    <div class="footer-social">
+                        <h3><i class="fab fa-instagram"></i> اینستاگرام</h3>
+                        <div class="social-icons">
+                            <a href="https://t.me" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                            <a href="mailto:info@cafedooni.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3><i class="fas fa-user-plus"></i> عضویت در باشگاه کافه دونی</h3>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="text" placeholder="نام و نام خانوادگی" required>
+                        <input type="tel" placeholder="شماره تماس" required pattern="[0-9]{11}">
+                        <button type="submit" class="btn btn-primary">عضویت</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>تمام حقوق مادی و معنوی این وب سایت متعلق به کافه دونی می باشد.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== FLOATING BUTTONS ========== -->
+    <a href="pages/live-map.html" class="floating-map-btn" aria-label="نقشه زنده">
+        <i class="fas fa-map-marked-alt"></i>
+    </a>
+
+    <button class="back-to-top" id="backToTop" aria-label="بازگشت به بالا">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- ========== SCRIPTS ========== -->
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/data-loader.js"></script>
+
+</body>
+</html>
