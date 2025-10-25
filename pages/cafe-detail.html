@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جزئیات کافه - کافه گردی تهران</title>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+
+    <!-- Header (همان هدر صفحه اصلی) -->
+    <header class="site-header" id="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-logo"><a href="../index.html"><img src="../assets/images/logo.svg" alt="کافه گردی تهران"></a></div>
+                <nav class="header-nav desktop-only">
+                    <ul class="nav-menu">
+                        <li><a href="../index.html">صفحه اصلی</a></li>
+                        <li><a href="places.html">کافه و رستوران‌ها</a></li>
+                        <li><a href="blog.html">وبلاگ</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <a href="tel:09395047710" class="btn btn-primary desktop-only">📞 <span>تبلیغات</span></a>
+                    <button class="mobile-menu-toggle mobile-only" id="mobile-menu-toggle" aria-label="منوی موبایل"><span class="hamburger"></span></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container" id="cafe-detail-container">
+            <!-- محتوا به صورت داینامیک از JSON بارگذاری می‌شود -->
+            <div class="loading">در حال بارگذاری اطلاعات کافه...</div>
+        </div>
+
+        <!-- Similar Cafes Section -->
+        <section class="similar-cafes-section bg-white">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">کافه‌های مشابه</h2>
+                </div>
+                <div class="cafe-grid" id="similar-cafes-grid">
+                    <!-- کافه‌های مشابه بارگذاری می‌شوند -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (همان فوتر صفحه اصلی) -->
+    <footer class="site-footer">
+        <!-- ... محتوای کامل فوتر را از index.html اینجا کپی کنید ... -->
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const cafeId = parseInt(urlParams.get('id'));
+
+            if (!cafeId) {
+                document.getElementById('cafe-detail-container').innerHTML = `<div class="error-message">کافه یافت نشد.</div>`;
+                return;
+            }
+
+            try {
+                const response = await fetch('../assets/data/cafes.json');
+                const data = await response.json();
+                const cafe = data.cafes.find(c => c.id === cafeId);
+
+                if (!cafe) {
+                    document.getElementById('cafe-detail-container').innerHTML = `<div class="error-message">کافه یافت نشد.</div>`;
+                    return;
+                }
+                
+                // Set page title
+                document.title = `${cafe.name} - کافه گردی تهران`;
+
+                renderCafeDetail(cafe);
+                renderSimilarCafes(data.cafes, cafe);
+
+            } catch (error) {
+                console.error('Error loading cafe data:', error);
+                document.getElementById('cafe-detail-container').innerHTML = `<div class="error-message">خطا در بارگذاری اطلاعات.</div>`;
+            }
+        });
+
+        function renderCafeDetail(cafe) {
+            const container = document.getElementById('cafe-detail-container');
+            const stars = createStarRating(cafe.rating || 0);
+
+            container.innerHTML = `
+                <article class="cafe-detail">
+                    <div class="cafe-detail-gallery">
+                        <img src="../${cafe.image}" alt="${cafe.name}" class="main-image">
+                    </div>
+                    <div class="cafe-detail-info">
+                        <h1 class="cafe-title">${cafe.name}</h1>
+                        <div class="cafe-meta">
+                            <div class="cafe-rating-detail">${stars} (${cafe.rating || 0}/5)</div>
+                            <div class="cafe-location-detail">📍 ${cafe.location.area}, ${cafe.location.address}</div>
+                        </div>
+                        <div class="cafe-description">
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.</p>
+                        </div>
+                        <div class="cafe-facilities">
+                            <h3 class="facilities-title">امکانات</h3>
+                            <ul class="facilities-list">
+                                ${cafe.facilities.map(f => `<li>${f}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="cafe-actions">
+                            <a href="${cafe.location.map_link}" target="_blank" class="btn btn-primary">مشاهده روی نقشه</a>
+                            <a href="tel:021000000" class="btn">تماس</a>
+                        </div>
+                    </div>
+                </article>
+            `;
+        }
+
+        function renderSimilarCafes(allCafes, currentCafe) {
+            const container = document.getElementById('similar-cafes-grid');
+            const similar = allCafes.filter(c => 
+                c.id !== currentCafe.id && 
+                (c.location.zone === currentCafe.location.zone || c.type.some(t => currentCafe.type.includes(t)))
+            ).slice(0, 4);
+
+            if (similar.length > 0) {
+                container.innerHTML = similar.map(c => createCafeCard(c)).join('');
+            } else {
+                container.innerHTML = `<p>کافه مشابهی یافت نشد.</p>`;
+            }
+        }
+
+        function createStarRating(rating) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= rating) stars += '★';
+                else stars += '☆';
+            }
+            return stars;
+        }
+
+        function createCafeCard(cafe) {
+            return `
+                <div class="cafe-card">
+                    <a href="cafe-detail.html?id=${cafe.id}">
+                        <div class="cafe-card-image"><img src="../${cafe.image}" alt="${cafe.name}" loading="lazy"></div>
+                        <div class="cafe-card-content">
+                            <h3>${cafe.name}</h3>
+                            <div class="cafe-rating">${createStarRating(cafe.rating || 0)}</div>
+                            <div>📍 ${cafe.location?.area || ''}</div>
+                        </div>
+                    </a>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

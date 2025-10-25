@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نتایج جستجو - کافه گردی تهران</title>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header" id="site-header">
+        <!-- ... محتوای هدر را اینجا کپی کنید ... -->
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            <section class="search-results-section">
+                <div class="section-header">
+                    <h1 class="section-title" id="results-title">نتایج جستجو</h1>
+                </div>
+                <div class="cafe-grid" id="search-results-grid">
+                    <div class="loading">در حال جستجو...</div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <!-- ... محتوای فوتر را اینجا کپی کنید ... -->
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get('q');
+            const type = urlParams.get('type');
+            const location = urlParams.get('location');
+            
+            try {
+                const response = await fetch('../assets/data/cafes.json');
+                const data = await response.json();
+                
+                const results = data.cafes.filter(cafe => {
+                    const nameMatch = !query || cafe.name.toLowerCase().includes(query.toLowerCase());
+                    const typeMatch = !type || cafe.type.includes(type);
+                    const locationMatch = !location || cafe.location.zone === location;
+                    return nameMatch && typeMatch && locationMatch;
+                });
+                
+                renderResults(results);
+
+            } catch (error) {
+                document.getElementById('search-results-grid').innerHTML = `<div class="error-message">خطا در بارگذاری نتایج.</div>`;
+            }
+        });
+
+        function renderResults(results) {
+            const container = document.getElementById('search-results-grid');
+            const title = document.getElementById('results-title');
+
+            if (results.length > 0) {
+                title.textContent = `نتایج جستجو (${results.length} مورد یافت شد)`;
+                container.innerHTML = results.map(cafe => createCafeCard(cafe)).join('');
+            } else {
+                title.textContent = 'نتیجه‌ای یافت نشد';
+                container.innerHTML = `<div class="empty-state">موردی با این مشخصات یافت نشد. لطفاً فیلترها را تغییر دهید.</div>`;
+            }
+        }
+
+        function createCafeCard(cafe) {
+            const stars = '★'.repeat(cafe.rating || 0) + '☆'.repeat(5 - (cafe.rating || 0));
+            return `
+                <div class="cafe-card">
+                    <a href="cafe-detail.html?id=${cafe.id}">
+                        <div class="cafe-card-image"><img src="../${cafe.image}" alt="${cafe.name}" loading="lazy"></div>
+                        <div class="cafe-card-content">
+                            <h3>${cafe.name}</h3>
+                            <div class="cafe-rating">${stars}</div>
+                            <div>📍 ${cafe.location?.area || ''}</div>
+                        </div>
+                    </a>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

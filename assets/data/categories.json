@@ -1,0 +1,24 @@
+{
+  "categories": [
+    {
+      "id": "birthday",
+      "name": "تولد",
+      "image": "assets/images/categories/birthday.jpg"
+    },
+    {
+      "id": "breakfast",
+      "name": "صبحانه",
+      "image": "assets/images/categories/breakfast.jpg"
+    },
+    {
+      "id": "hookah",
+      "name": "قلیان",
+      "image": "assets/images/categories/hookah.jpg"
+    },
+    {
+      "id": "outdoor",
+      "name": "کافه های روباز",
+      "image": "assets/images/categories/outdoor.jpg"
+    }
+  ]
+}

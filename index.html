@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="کافه گردی تهران - اولین و تنها مرجع تخصصی معرفی کافه‌های شهر تهران">
+    <title>کافه گردی تهران</title>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/images/favicon.png">
+</head>
+<body>
+    
+    <header class="site-header" id="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-logo">
+                    <a href="/index.html">
+                        <img src="/assets/images/logo-white.svg" alt="کافه گردی تهران">
+                    </a>
+                </div>
+                <nav class="header-nav desktop-only">
+                    <ul class="nav-menu">
+                        <li class="nav-item active"><a href="/index.html">صفحه اصلی</a></li>
+                        <li class="nav-item"><a href="/pages/places.html">کافه و رستوران‌ها</a></li>
+                        <li class="nav-item"><a href="/pages/blog.html">وبلاگ</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <a href="/pages/register.html" class="btn btn-primary desktop-only">✍️ <span>ثبت کافه</span></a>
+                    <button class="mobile-menu-toggle mobile-only" id="mobile-menu-toggle" aria-label="منوی موبایل">
+                        <span class="hamburger"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="off-canvas-menu" id="off-canvas-menu">
+        <div class="off-canvas-overlay"></div>
+        <div class="off-canvas-content">
+            <div class="off-canvas-header">
+                <button class="off-canvas-close" id="off-canvas-close" aria-label="بستن منو">×</button>
+            </div>
+            <nav class="off-canvas-nav">
+                <ul>
+                    <li><a href="/index.html">🏠 صفحه اصلی</a></li>
+                    <li><a href="/pages/places.html">🍕 کافه و رستوران‌ها</a></li>
+                    <li><a href="/pages/blog.html">📄 وبلاگ</a></li>
+                    <li><a href="/pages/register.html">✍️ ثبت کافه</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <main class="site-main">
+        <section class="hero-section">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <h1>کافه گردی تهران</h1>
+                <p>اولین و تنها مرجع تخصصی معرفی کافه‌ها و رستوران‌های تهران</p>
+                <a href="#search-section" class="btn btn-hero">جستجوی کافه مورد نظر</a>
+            </div>
+        </section>
+
+        <section class="search-section" id="search-section">
+            <div class="container">
+                <div class="search-container">
+                    <div class="search-header"><h2>جستجوی پیشرفته</h2></div>
+                    <div class="search-filters">
+                        <div class="filter-item"><input type="search" id="search-input" class="filter-input" placeholder="نام کافه..."></div>
+                        <div class="filter-item"><select id="type-filter" class="filter-select"><option value="">نوع</option></select></div>
+                        <div class="filter-item"><select id="location-filter" class="filter-select"><option value="">موقعیت</option></select></div>
+                        <div class="filter-item"><button type="button" id="search-submit" class="btn btn-search">جستجو</button></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div id="dynamic-content">
+            <div class="loading">در حال بارگذاری محتوا...</div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-wave">
+            <svg viewBox="0 0 1000 100" preserveAspectRatio="none"><path opacity="0.33" d="M473,67.3c-203.9,88.3-263.1-34-320.3,0C66,119.1,0,59.7,0,59.7V0h1000v59.7 c0,0-62.1,26.1-94.9,29.3c-32.8,3.3-62.8-12.3-75.8-22.1C806,49.6,745.3,8.7,694.9,4.7S492.4,59,473,67.3z"/><path opacity="0.66" d="M734,67.3c-45.5,0-77.2-23.2-129.1-39.1c-28.6-8.7-150.3-10.1-254,39.1 s-91.7-34.4-149.2,0C115.7,118.3,0,39.8,0,39.8V0h1000v36.5c0,0-28.2-18.5-92.1-18.5C810.2,18.1,775.7,67.3,734,67.3z"/><path d="M766.1,28.9c-200-57.5-266,65.5-395.1,19.5C242,1.8,242,5.4,184.8,20.6C128,35.8,132.3,44.9,89.9,52.5C28.6,63.7,0,0,0,0 h1000c0,0-9.9,40.9-83.6,48.1S829.6,47,766.1,28.9z"/></svg>
+        </div>
+        <div class="footer-content">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-column footer-about">
+                        <img src="/assets/images/logo-white.svg" alt="کافه گردی تهران" class="footer-logo">
+                        <p class="footer-description"><strong>کافه گردی تهران</strong> اولین و تنها مرجع تخصصی معرفی کافه‌های شهر تهران.</p>
+                    </div>
+                    <div class="footer-column footer-newsletter">
+                        <h3 class="footer-title">عضویت در باشگاه کافه گردی</h3>
+                        <form class="newsletter-form" id="newsletter-form">
+                            <input type="text" name="name" placeholder="نام و نام خانوادگی" required class="form-input">
+                            <input type="tel" name="phone" placeholder="شماره تماس" required class="form-input">
+                            <button type="submit" class="btn btn-newsletter">عضویت</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom"><p class="copyright">تمام حقوق این وب‌سایت متعلق به کافه گردی تهران است.</p></div>
+    </footer>
+
+    <button class="back-to-top" aria-label="بازگشت به بالا">↑</button>
+
+    <script src="/assets/js/data-loader.js"></script>
+    <script src="/assets/js/app.js"></script>
+</body>
+</html>
