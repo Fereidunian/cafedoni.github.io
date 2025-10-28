@@ -3,7 +3,7 @@
     {
       "id": "birthday",
       "name": "تولد",
-      "image": "assets/images/categories/birthday.jpg"
+      "image": "assets/images/categories/birthday.webp"
     },
     {
       "id": "breakfast",
@@ -21,4 +21,5 @@
       "image": "assets/images/categories/outdoor.jpg"
     }
   ]
+
 }
